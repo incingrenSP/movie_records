@@ -38,11 +38,12 @@ void input(Movies& admin)
 	std::string name, rating;
 	int count{ 0 };
 	std::cout << "\nMovie Name: ";
-	fflush(stdin);
 	std::cin >> name;
+	fflush(stdout);
 	std::cout << "\nMovie Rating: ";
-	fflush(stdin);
+	fflush(stdout);
 	std::cin >> rating;
+
 	std::cout << "\nTimes watched: ";
 	std::cin >> count;
 }
@@ -102,12 +103,10 @@ int main()
 {
 	Movies admin;
 	int choice{ 0 };
-	while (true) {
-		print_stuffs();
-		std::cout << "What do you want to do? ";
-		std::cin >> choice;
-		checkChoice(choice, admin);
-	}
+	print_stuffs();
+	std::cout << "What do you want to do? ";
+	std::cin >> choice;
+	checkChoice(choice, admin);
 
 	return 0;
 }
