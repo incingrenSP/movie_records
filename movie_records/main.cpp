@@ -1,0 +1,123 @@
+/*
+* For this challenge you are to develop the foundation for a program
+* for movie fanatics to keep track of what movies they hav watched
+* and how many times they watched each movie.
+*
+* The program must support the following:
+* class Movie - models a movie which includes
+* -movie name
+* -movie rating (G, PG, PG-14, R)
+* -watched - the number of time the movie has been watched
+*
+* class Movies - models a collection of movie objects
+*
+* Obviously, Movies needs to know about Movie since it is a collection
+* of movie objects
+* However, our main driver should only interact with the Movies class
+*
+* For example, a simple main should be able to
+* -create a Movies obj
+* -ask the Movies object to add a movie by providing the
+* movie name, rating and watched count
+* -ask the Movies object to increment the watched count by 1 for a movie given its nam
+* ask the Movies object to display all of its movies
+*
+* Additionally,
+* -if we try to add a movie whose name is already in the movies collection
+* we should display this error to the user
+* -if we try to increment the watched count for a movie whose name is not in the movies
+* collection we should display this error to the user.
+*/
+
+#include "Movie.h"
+#include "Movies.h"
+#include <cstdlib>
+
+void input(Movies& admin)
+{
+	std::string name, rating;
+	int count{ 0 };
+	std::cout << "\nMovie Name: ";
+	fflush(stdin);
+	std::cin >> name;
+	std::cout << "\nMovie Rating: ";
+	fflush(stdin);
+	std::cin >> rating;
+	std::cout << "\nTimes watched: ";
+	std::cin >> count;
+}
+
+void increase(Movies& admin)
+{
+	std::string name;
+	std::cout << "Movie name: ";
+	std::cin >> name;
+	fflush(stdin);
+	admin.incCount(name);
+}
+
+void print_stuffs()
+{
+	std::cout << "1. Add new record" << std::endl;
+	std::cout << "2. View existing records [WIP]" << std::endl;
+	std::cout << "3. Add watch count" << std::endl;
+	std::cout << "4. Exit" << std::endl;
+}
+
+void records(Movies admin)
+{
+	if (admin.checkVecCount()) {
+		admin.displayRecords();
+	}
+	else {
+		std::cout << "\nNo records yet.";
+	}
+}
+
+void checkChoice(int choice, Movies& admin)
+{
+	switch (choice) {
+	case 1:
+		system("cls");
+		input(admin);
+		break;
+	case 2:
+		system("cls");
+		records(admin);
+		break;
+	case 3:
+		system("cls");
+		increase(admin);
+		break;
+	case 4:
+		system("exit");
+		break;
+	default:
+		std::cout << "Enter a valid input";
+		system("exit");
+	}
+}
+
+int main()
+{
+	Movies admin;
+	int choice{ 0 };
+	while (true) {
+		print_stuffs();
+		std::cout << "What do you want to do? ";
+		std::cin >> choice;
+		checkChoice(choice, admin);
+	}
+
+	return 0;
+}
+
+/*
+* admin stores all the data for the account admin
+* it has access to the attribute movie which is a vector of the objects of class Movie
+* in order to add a new movie infomation:
+* i need to use the object admin
+* and pass data into the constructor of class Movies
+* which creates a new object for class Movie
+* and stores it into the vector of objects
+*/
