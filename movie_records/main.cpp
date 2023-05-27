@@ -32,19 +32,17 @@
 #include "Movie.h"
 #include "Movies.h"
 #include <cstdlib>
+#include <sstream>
 
 void input(Movies& admin)
 {
 	std::string name, rating;
 	int count{ 0 };
-	std::cout << "\nMovie Name: ";
-	std::cin >> name;
-	fflush(stdout);
-	std::cout << "\nMovie Rating: ";
-	fflush(stdout);
-	std::cin >> rating;
-
-	std::cout << "\nTimes watched: ";
+	std::cout << "Movie Name: ";
+	std::getline(std::cin, name);
+	std::cout << "Movie Rating: ";
+	std::getline(std::cin, name);
+	std::cout << "Times watched: ";
 	std::cin >> count;
 }
 
@@ -52,7 +50,7 @@ void increase(Movies& admin)
 {
 	std::string name;
 	std::cout << "Movie name: ";
-	std::cin >> name;
+	std::getline(std::cin, name);
 	fflush(stdin);
 	admin.incCount(name);
 }
