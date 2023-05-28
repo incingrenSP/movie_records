@@ -38,11 +38,11 @@ void input(Movies& admin)
 {
 	std::string name, rating;
 	int count{ 0 };
-	std::cout << "Movie Name: ";
+	std::cout << "\nMovie Name: ";
 	std::getline(std::cin, name);
-	std::cout << "Movie Rating: ";
+	std::cout << "\nMovie Rating: ";
 	std::getline(std::cin, name);
-	std::cout << "Times watched: ";
+	std::cout << "\nTimes watched: ";
 	std::cin >> count;
 }
 
