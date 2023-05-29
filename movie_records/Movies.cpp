@@ -55,5 +55,6 @@ void Movies::display(Movie record)
 {
 	std::cout << "\nMovie Name: " << record.getName();
 	std::cout << "\nMovie Rating: " << record.getRating();
-	std::cout << "\nTimes Watched: " << record.getCount();
+	std::cout << "\nTimes Watched: " << record.getCount() << std::endl;
+	std::cout << "===============================" << std::endl;
 }
