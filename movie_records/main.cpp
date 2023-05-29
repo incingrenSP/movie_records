@@ -108,7 +108,6 @@ int main()
 	} while (choice != 0);
 	return 0;
 }
-
 /*
 * admin stores all the data for the account admin
 * it has access to the attribute movie which is a vector of the objects of class Movie
