@@ -13,9 +13,9 @@ public:
 	void incCount(std::string);
 	int checkVecCount();
 	void displayRecords();
-	void display(Movie);
 private:
 	std::string name;
 	std::vector<Movie> movie;
+	void display(Movie);
 };
 
