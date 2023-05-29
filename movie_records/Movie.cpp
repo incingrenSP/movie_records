@@ -7,7 +7,7 @@ Movie::Movie(std::string name, std::string p_rating, int count)
 Movie::~Movie()
 {}
 
-void Movie::addMovies(std::string name, char rate, int count)
+void Movie::addMovies(std::string name, std::string rate, int count)
 {
 	this->movie_name = name;
 	this->rating = rate;

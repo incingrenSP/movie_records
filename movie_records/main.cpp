@@ -42,9 +42,26 @@ void print_stuffs()
 	std::cout << "4. Exit" << std::endl;
 }
 
-int main()
+void increase(Movies& admin)
 {
-	Movies admin;
+	std::string name;
+	std::cout << "Movie Name: ";
+	std::cin >> name;
+	admin.incCount(name);
+}
+
+void viewRecords(Movies admin)
+{
+	if (admin.checkVecCount()) {
+		admin.displayRecords();
+	}
+	else {
+		std::cout << "There are currently no records saved.";
+	}
+}
+
+void input_data(Movies& admin)
+{
 	std::string name, rate;
 	int count{ 0 };
 	std::cout << "\nMovie Name: ";
@@ -53,11 +70,44 @@ int main()
 	std::getline(std::cin, rate);
 	std::cout << "\nWatch Count: ";
 	std::cin >> count;
+	system("cls");
 	admin.addMovie(name, rate, count);
-	admin.displayRecords();
-	return 0;
 }
 
+void checkChoice(int choice, Movies& admin)
+{
+	switch(choice) {
+		case 1:
+			input_data(admin);
+			break;
+		case 2:
+			viewRecords(admin);
+			break;
+		case 3:
+			increase(admin);
+			break;
+		case 4:
+			system("exit");
+			break;
+		default:
+			std::cout << "Enter valid input" << std::endl;
+			system("exit");
+	}
+}
+
+int main()
+{
+	Movies admin;
+	int choice{ 0 };
+	do {
+		print_stuffs();
+		std::cout << "What do you want to do? ";
+		std::cin >> choice;
+		std::cin.ignore(10000, '\n');
+		checkChoice(choice, admin);
+	} while (choice != 0);
+	return 0;
+}
 /*
 * admin stores all the data for the account admin
 * it has access to the attribute movie which is a vector of the objects of class Movie
