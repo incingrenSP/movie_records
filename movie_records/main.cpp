@@ -53,6 +53,8 @@ int main()
 	std::getline(std::cin, rate);
 	std::cout << "\nWatch Count: ";
 	std::cin >> count;
+	admin.addMovie(name, rate, count);
+	admin.displayRecords();
 	return 0;
 }
 
