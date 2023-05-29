@@ -32,29 +32,7 @@
 #include "Movie.h"
 #include "Movies.h"
 #include <cstdlib>
-
-void input(Movies& admin)
-{
-	std::string name, rating;
-	int count{ 0 };
-	std::cout << "\nMovie Name: ";
-	fflush(stdin);
-	std::cin >> name;
-	std::cout << "\nMovie Rating: ";
-	fflush(stdin);
-	std::cin >> rating;
-	std::cout << "\nTimes watched: ";
-	std::cin >> count;
-}
-
-void increase(Movies& admin)
-{
-	std::string name;
-	std::cout << "Movie name: ";
-	std::cin >> name;
-	fflush(stdin);
-	admin.incCount(name);
-}
+#include <sstream>
 
 void print_stuffs()
 {
@@ -64,51 +42,19 @@ void print_stuffs()
 	std::cout << "4. Exit" << std::endl;
 }
 
-void records(Movies admin)
-{
-	if (admin.checkVecCount()) {
-		admin.displayRecords();
-	}
-	else {
-		std::cout << "\nNo records yet.";
-	}
-}
-
-void checkChoice(int choice, Movies& admin)
-{
-	switch (choice) {
-	case 1:
-		system("cls");
-		input(admin);
-		break;
-	case 2:
-		system("cls");
-		records(admin);
-		break;
-	case 3:
-		system("cls");
-		increase(admin);
-		break;
-	case 4:
-		system("exit");
-		break;
-	default:
-		std::cout << "Enter a valid input";
-		system("exit");
-	}
-}
-
 int main()
 {
 	Movies admin;
-	int choice{ 0 };
-	while (true) {
-		print_stuffs();
-		std::cout << "What do you want to do? ";
-		std::cin >> choice;
-		checkChoice(choice, admin);
-	}
-
+	std::string name, rate;
+	int count{ 0 };
+	std::cout << "\nMovie Name: ";
+	std::getline(std::cin, name);
+	std::cout << "\nMovie Rating: ";
+	std::getline(std::cin, rate);
+	std::cout << "\nWatch Count: ";
+	std::cin >> count;
+	admin.addMovie(name, rate, count);
+	admin.displayRecords();
 	return 0;
 }
 
@@ -121,3 +67,5 @@ int main()
 * which creates a new object for class Movie
 * and stores it into the vector of objects
 */
+
+//cosine similarity
