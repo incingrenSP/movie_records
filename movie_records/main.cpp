@@ -46,7 +46,7 @@ void increase(Movies& admin)
 {
 	std::string name;
 	std::cout << "Movie Name: ";
-	std::cin >> name;
+	std::getline(std::cin, name);
 	admin.incCount(name);
 }
 
