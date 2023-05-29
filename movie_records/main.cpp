@@ -1,6 +1,6 @@
 /*
 * For this challenge you are to develop the foundation for a program
-* for movie fanatics to keep track of what movies they hav watched
+* for movie fanatics to keep track of what movies they have watched
 * and how many times they watched each movie.
 *
 * The program must support the following:
@@ -36,7 +36,7 @@
 
 void print_stuffs()
 {
-	std::cout << "1. Add new record" << std::endl;
+	std::cout << "\n1. Add new record" << std::endl;
 	std::cout << "2. View existing records [WIP]" << std::endl;
 	std::cout << "3. Add watch count" << std::endl;
 	std::cout << "4. Exit" << std::endl;
@@ -46,7 +46,7 @@ void increase(Movies& admin)
 {
 	std::string name;
 	std::cout << "Movie Name: ";
-	std::cin >> name;
+	std::getline(std::cin, name);
 	admin.incCount(name);
 }
 
@@ -56,7 +56,7 @@ void viewRecords(Movies admin)
 		admin.displayRecords();
 	}
 	else {
-		std::cout << "There are currently no records saved.";
+		std::cout << "There are currently no records saved." << std::endl;;
 	}
 }
 
@@ -78,20 +78,23 @@ void checkChoice(int choice, Movies& admin)
 {
 	switch(choice) {
 		case 1:
+			system("cls");
 			input_data(admin);
 			break;
 		case 2:
+			system("cls");
 			viewRecords(admin);
 			break;
 		case 3:
+			system("cls");
 			increase(admin);
 			break;
 		case 4:
-			system("exit");
+			exit(0);
 			break;
 		default:
-			std::cout << "Enter valid input" << std::endl;
-			system("exit");
+			std::cout << "\nEnter valid input" << std::endl;
+			exit(0);
 	}
 }
 
@@ -105,7 +108,7 @@ int main()
 		std::cin >> choice;
 		std::cin.ignore(10000, '\n');
 		checkChoice(choice, admin);
-	} while (choice != 0);
+	} while (choice != 4);
 	return 0;
 }
 /*
