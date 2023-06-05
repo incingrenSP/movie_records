@@ -30,7 +30,7 @@ void Movies::incCount(std::string name)
 		}
 	}
 	if (!counter) {
-		std::cout << "Error: Could not find record for " << name << std::endl;
+		std::cout << "Error: Could not find record for '" << name << "'" << std::endl;
 	}
 }
 
@@ -57,4 +57,36 @@ void Movies::display(Movie record)
 	std::cout << "\nMovie Rating: " << record.getRating();
 	std::cout << "\nTimes Watched: " << record.getCount() << std::endl;
 	std::cout << "===============================" << std::endl;
+}
+
+void increase(Movies& admin)
+{
+	std::string name;
+	std::cout << "Movie Name: ";
+	std::getline(std::cin, name);
+	admin.incCount(name);
+}
+
+void viewRecords(Movies admin)
+{
+	if (admin.checkVecCount()) {
+		admin.displayRecords();
+	}
+	else {
+		std::cout << "There are currently no records saved." << std::endl;;
+	}
+}
+
+void input_data(Movies& admin)
+{
+	std::string name, rate;
+	int count{ 0 };
+	std::cout << "\nMovie Name: ";
+	std::getline(std::cin, name);
+	std::cout << "\nMovie Rating: ";
+	std::getline(std::cin, rate);
+	std::cout << "\nWatch Count: ";
+	std::cin >> count;
+	system("cls");
+	admin.addMovie(name, rate, count);
 }
